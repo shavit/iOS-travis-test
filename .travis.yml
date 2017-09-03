@@ -1,5 +1,21 @@
 language: objective-c
 os: osx
 osx_image: xcode9
-xcode_project: "iOS Travis Test.xcodeproj"
-xcode_scheme: "iOS Travis Test"
+xcode_project: iOS Travis Test.xcodeproj
+xcode_scheme: iOS Travis Test
+before_script:
+- security create-keychain -p travis ios-build.keychain
+- security import ./certs/apple.cer -k ~/Library/Keychains/mac-build.keychain -T /usr/bin/codesign
+- security import ./certs/dist.cer -k ~/Library/Keychains/mac-build.keychain -T /usr/bin/codesign
+- security import ./certs/dist.p12 -k ~/Library/Keychains/mac-build.keychain -P $KEY_PASSWORD
+  -T /usr/bin/codesign
+script:
+- xcodebuild clean test -project "iOS Travis Test.xcodeproj" -scheme "iOS Travis Test"
+  CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+after_script:
+- security delete-keychain ios-build.keychain
+after_success:
+- echo "Configure Travis CI to deploy into TestFlight"
+env:
+  global:
+    secure: BMSOfyeA/l/mHlbuj01t5EKYEHZkaZirmqRZPj4XfY5OFveMwZpSM4rjyXHMlGW0CyY/G2VQ6VPmmgbXulM5AZtQJrtBpCywZ1hM6T7tnxh29UCGEB9AXTVwIFS2VSvtMi+LJ+FKUnH35q8VyVmMOz2mEPxRtJOQxHNtWLJpeAxt3Wjf8meqfHreWyX4oxRPjZYwfyu8Ld8kx4qWv+XKswWtAo4M1rWHHWqQfJi+/eVrSj/eKpldpQQdsCfe9qmq1Df3Xxz6VbWio1BY0bYNDeCzzEc8qpPbR8RGwxMO1Ci+DbzXIaMoixGSQUGMBy5cyFiWL46ScOAt/sbj7PyXcYzijJ57F18daj1Ihvg7eDgL0oTxzD8RWqltrsMP4KqWDtM88mSLXiuV6ah2SXE/XiUuzt2oeVw8nHLL/dqosJc8P6VavSR/WpjssQqokqLOFDKTpYz7Y24thrZ2d2JHtr+0/a5n6Lb8K4K1yRwtFlpZbeHluRD7lBcjc0u2E/8gbKjPXcK2KVkW66iXa8eB136eH8FZCsfQmv4ZOyDApZmcZVN4ElG/aJ13o3F2AbTC9zqJEpohmAhUD5A9C1Rz6jCWnQNBGOgIyvA6v6Ct/3s1746UmN4XoANi1X3ej4353qJEWGgovxiA5wfbDmOl9U7/EKl+BRzhU59SlwG/KOs=
