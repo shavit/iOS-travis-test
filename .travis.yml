@@ -10,7 +10,7 @@ before_script:
 - security import ./certs/dist.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD
   -T /usr/bin/codesign
 script:
-- xcodebuild clean test -project "iOS Travis Test.xcodeproj" -scheme "iOS Travis Test" -destination "platform=iOS Simulator,name=iPhone6,OS=11.0"
+- xcodebuild clean test -project 'iOS Travis Test.xcodeproj' -scheme "iOS Travis Test" -destination 'platform=iOS Simulator,name=iPhone6,OS=11.0'
   CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
 after_script:
 - security delete-keychain ios-build.keychain
