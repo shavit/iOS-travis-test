@@ -1,0 +1,5 @@
+language: objective-c
+os: osx
+osx_image: xcode9
+xcode_project: "iOS Travis Test.xcodeproj"
+xcode_scheme: "iOS Travis Test"
