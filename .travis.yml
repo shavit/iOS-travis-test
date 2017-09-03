@@ -5,9 +5,9 @@ xcode_project: iOS Travis Test.xcodeproj
 xcode_scheme: iOS Travis Test
 before_script:
 - security create-keychain -p travis ios-build.keychain
-- security import ./certs/apple.cer -k ~/Library/Keychains/mac-build.keychain -T /usr/bin/codesign
-- security import ./certs/dist.cer -k ~/Library/Keychains/mac-build.keychain -T /usr/bin/codesign
-- security import ./certs/dist.p12 -k ~/Library/Keychains/mac-build.keychain -P $KEY_PASSWORD
+- security import ./certs/apple.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+- security import ./certs/dist.cer -k ~/Library/Keychains/ios-build.keychain -T /usr/bin/codesign
+- security import ./certs/dist.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD
   -T /usr/bin/codesign
 script:
 - xcodebuild clean test -project "iOS Travis Test.xcodeproj" -scheme "iOS Travis Test"
