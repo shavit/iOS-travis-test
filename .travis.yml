@@ -10,12 +10,13 @@ before_script:
 - security import ./certs/dist.p12 -k ~/Library/Keychains/ios-build.keychain -P $KEY_PASSWORD
   -T /usr/bin/codesign
 script:
-- xcodebuild clean test -project 'iOS Travis Test.xcodeproj' -scheme "iOS Travis Test" -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0'
-  CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
+- xcodebuild clean test -project 'iOS Travis Test.xcodeproj' -scheme "iOS Travis Test"
+  -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' CODE_SIGNING_REQUIRED=NO
+  CODE_SIGN_IDENTITY=""
 after_script:
 - security delete-keychain ios-build.keychain
 after_success:
 - echo "Configure Travis CI to deploy into TestFlight"
 env:
   global:
-    secure: BMSOfyeA/l/mHlbuj01t5EKYEHZkaZirmqRZPj4XfY5OFveMwZpSM4rjyXHMlGW0CyY/G2VQ6VPmmgbXulM5AZtQJrtBpCywZ1hM6T7tnxh29UCGEB9AXTVwIFS2VSvtMi+LJ+FKUnH35q8VyVmMOz2mEPxRtJOQxHNtWLJpeAxt3Wjf8meqfHreWyX4oxRPjZYwfyu8Ld8kx4qWv+XKswWtAo4M1rWHHWqQfJi+/eVrSj/eKpldpQQdsCfe9qmq1Df3Xxz6VbWio1BY0bYNDeCzzEc8qpPbR8RGwxMO1Ci+DbzXIaMoixGSQUGMBy5cyFiWL46ScOAt/sbj7PyXcYzijJ57F18daj1Ihvg7eDgL0oTxzD8RWqltrsMP4KqWDtM88mSLXiuV6ah2SXE/XiUuzt2oeVw8nHLL/dqosJc8P6VavSR/WpjssQqokqLOFDKTpYz7Y24thrZ2d2JHtr+0/a5n6Lb8K4K1yRwtFlpZbeHluRD7lBcjc0u2E/8gbKjPXcK2KVkW66iXa8eB136eH8FZCsfQmv4ZOyDApZmcZVN4ElG/aJ13o3F2AbTC9zqJEpohmAhUD5A9C1Rz6jCWnQNBGOgIyvA6v6Ct/3s1746UmN4XoANi1X3ej4353qJEWGgovxiA5wfbDmOl9U7/EKl+BRzhU59SlwG/KOs=
+    secure: cjWTWJQLtTdQIMda59ayRH2Kz6tBMytjPcJ3hMxgyqyPQygJ7X+5ky6jnXeIwrQ7e7WgZh9k3w+G6zYE+5nfh8cIAP1vk4tUibhHMnwCYSqGIQi89uSw5ztOXo12bylpzhAJI6SE2wA3waqaqaWZYfCw3/SyIB8pYfVrrAwtsbdLolvbs4lV9hZSD9e/TN0xaOvjOGn3M1XyyOBdqQeY2Ano+oG9GXZz/lM1ZS4Z/BchvLy7pcr5KSAJT/7/RlNGtEfPblXe+9rMMwcsMKdfqhpcshEBwQfzk2LhZQdBsjidAv8MJQpPlaaUCVdZKUFM5ybD+TB73NjNzIxM4ZRejF+hxuwgjzzEVso9WYwTQHZEiwphpNDz1E9xFBixuEEMy8wQbQzlAvPzA4MZ2AKwQOTnIhynEG+sZqxkY7Su4hUZEirKzCDwuFQ8KVR6S6V1HmN25ClFxqm0+/DCAJ2BIUwXlPgGA/2sPszM6i6OuQJ8KAzrZfy4QpNr8+mUXkaRyeqZzAqVG9h+tj9UremTbV4xmBxHuAk3/DqiDVggROGqOcGzCroSYrYL47Wze5zm/wJCzsG+wkaT/5JhyS5wZo+tBuZz+7nL5Jld4u5l+22iUO8tUsZadT3k7NAXJQnLkTp3GLvKwVQTIiWK1bQ1eGNs82xd13njeazD4I6M7Cg=
