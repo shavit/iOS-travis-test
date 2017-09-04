@@ -430,7 +430,7 @@
 				DEVELOPMENT_TEAM = M87Q25Q5K3;
 				INFOPLIST_FILE = "iOS Travis Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Shavit-Tzuriel.iOS-Travis-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shavit-Tzuriel.TestForTravis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,7 +444,7 @@
 				DEVELOPMENT_TEAM = M87Q25Q5K3;
 				INFOPLIST_FILE = "iOS Travis Test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Shavit-Tzuriel.iOS-Travis-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shavit-Tzuriel.TestForTravis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -532,6 +532,7 @@
 				DE5F0D861F5C368600D0EE57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE5F0D871F5C368600D0EE57 /* Build configuration list for PBXNativeTarget "iOS Travis TestTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +541,7 @@
 				DE5F0D891F5C368600D0EE57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE5F0D8A1F5C368600D0EE57 /* Build configuration list for PBXNativeTarget "iOS Travis TestUITests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +550,7 @@
 				DE5F0D8C1F5C368600D0EE57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
